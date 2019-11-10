@@ -21,10 +21,32 @@ class Phrase {
     };
 
 
+    /**
+    * Checks if passed letter is in phrase
+    * @param (string) letter - Letter to check
+    */
+    checkLetter(letter) {
+        for( let i = 0; i < this.phrase.length; i++) {
+            if (letter === this.phrase.charAt(i)) {
+                return true;
+            } 
+        }
+        return false;
 
+    };
 
+    /**
+    * Displays passed letter on screen after a match is found
+    * @param (string) letter - Letter to display
+    */
+    showMatchedLetter(letter) {
+        const $list = $(letter);
+        $list.forEach(function(item) {
+            item.attr('hide', 'show');
+          });
 
-
-
+    };
+        
+    
 }
 
