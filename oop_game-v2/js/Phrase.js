@@ -39,14 +39,13 @@ class Phrase {
     * Displays passed letter on screen after a match is found
     * @param (string) letter - Letter to display
     */
-    showMatchedLetter(letter) {
-        const $list = $(letter);
-        $list.forEach(function(item) {
-            item.attr('hide', 'show');
-          });
-
+   showMatchedLetter(letter) {
+        const list = document.getElementsByClassName(letter);
+        for (let item of list) {
+            item.classList.replace('hide', 'show');
+        }
     };
         
-    
+
 }
 
