@@ -74,18 +74,20 @@ class Game {
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {
-        this.missed += 1;
-        const hearts = document.querySelectorAll('.tries img');
+        this.missed++;
+        const hearts = document.getElementsByClassName('tries');
+
         for ( let i = 0; i < this.missed; i++) {
-            hearts[i].src = "images/lostHeart.png";
+            hearts[i].children.src = "images/lostHeart.png";
         }
-        if (this.missed === 5) {
-            for ( let i = 0; i < 5; i++) {
-                hearts[i].src = "images/liveHeart.png";
-            }
-            return this.gameOver(false);
+
+        // if (this.missed === 5) {
+        //     for ( let i = 0; i < 5; i++) {
+        //         hearts[i].src = "images/liveHeart.png";
+        //     }
+        //     return this.gameOver(false);
             
-        }
+        // }
     };
 
 
@@ -104,6 +106,12 @@ class Game {
             $('#overlay').attr('class', 'lose');
         }
     };
-
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(button) {
+        console.log(button);
+        };
 }
 
