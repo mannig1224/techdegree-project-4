@@ -13,11 +13,16 @@ class Game {
     */
     createPhrases() {
         const array = 
-        ["Life is like a box of chocolates", 
-        "There is no trying", 
-        "May the force be with you",
-        "You have to see the matrix for yourself",
-        "Hello World"];
+        ["On", 
+        "Tw", 
+        "Th",
+        "Fo",
+        "Fi"];
+        // ["Life is like a box of chocolates", 
+        // "There is no trying", 
+        // "May the force be with you",
+        // "You have to see the matrix for yourself",
+        // "Hello World"];
         let phraseArr = [];
         array.forEach(function(currentPhrase, index) {
             phraseArr[index] = new Phrase(currentPhrase);
@@ -44,24 +49,48 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
 
     };
-    
+
     /**
     * Checks for winning move
     * @return {boolean} True if game has been won, false if game wasn't
     won
     */
-    checkForWin() {};
+    checkForWin() {
+        const phraseList = document.getElementsByClassName('letter');
+        for (let item of phraseList) {
+            if (item.classList.contains('show')) {
+                return true;
+            } else {
+                break;
+            }
+        }
+        return false;
+    };
+
+
     /**
     * Increases the value of the missed property
     * Removes a life from the scoreboard
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {};
+
+
     /**
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
     */
-    gameOver(gameWon) {};
+    gameOver(gameWon) {
+        if (gameWon) {
+            $('#overlay').show();
+            $('#game-over-message').text("You Win!");
+            $('#overlay').attr('class', 'win');
+        } else {
+            $('#overlay').show();
+            $('#game-over-message').text("You Lose!");
+            $('#overlay').attr('class', 'lose');
+        }
+    };
 
 }
 
