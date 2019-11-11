@@ -73,7 +73,20 @@ class Game {
     * Removes a life from the scoreboard
     * Checks if player has remaining lives and ends game if player is out
     */
-    removeLife() {};
+    removeLife() {
+        this.missed += 1;
+        const hearts = document.querySelectorAll('.tries img');
+        for ( let i = 0; i < this.missed; i++) {
+            hearts[i].src = "images/lostHeart.png";
+        }
+        if (this.missed === 5) {
+            for ( let i = 0; i < 5; i++) {
+                hearts[i].src = "images/liveHeart.png";
+            }
+            return this.gameOver(false);
+            
+        }
+    };
 
 
     /**
