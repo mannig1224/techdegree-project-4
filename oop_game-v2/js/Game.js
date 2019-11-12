@@ -13,11 +13,11 @@ class Game {
     */
     createPhrases() {
         const array = 
-        ["On", 
-        "Tw", 
-        "Th",
-        "Fo",
-        "Fi"];
+        ["One", 
+        "Two", 
+        "Thr",
+        "Fou",
+        "Fiv"];
         // ["Life is like a box of chocolates", 
         // "There is no trying", 
         // "May the force be with you",
@@ -58,13 +58,11 @@ class Game {
     checkForWin() {
         const phraseList = document.getElementsByClassName('letter');
         for (let item of phraseList) {
-            if (item.classList.contains('show')) {
-                return true;
-            } else {
-                break;
-            }
+            if (!(item.classList.contains('show'))) {
+                return false;
+            } 
         }
-        return false;
+        return true;
     };
 
 
@@ -75,19 +73,19 @@ class Game {
     */
     removeLife() {
         this.missed++;
-        const hearts = document.getElementsByClassName('tries');
+        const hearts = document.querySelectorAll('.tries img');
 
         for ( let i = 0; i < this.missed; i++) {
-            hearts[i].children.src = "images/lostHeart.png";
+            hearts[i].src = "images/lostHeart.png";
         }
 
-        // if (this.missed === 5) {
-        //     for ( let i = 0; i < 5; i++) {
-        //         hearts[i].src = "images/liveHeart.png";
-        //     }
-        //     return this.gameOver(false);
+        if (this.missed === 5) {
+            for ( let i = 0; i < 5; i++) {
+                hearts[i].src = "images/liveHeart.png";
+            }
+            return this.gameOver(false);
             
-        // }
+        }
     };
 
 
