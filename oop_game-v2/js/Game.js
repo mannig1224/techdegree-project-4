@@ -58,7 +58,7 @@ class Game {
     checkForWin() {
         const phraseList = document.getElementsByClassName('letter');
         for (let item of phraseList) {
-            if (!(item.classList.contains('show'))) {
+            if (!item.classList.contains('show')) {
                 return false;
             } 
         }
@@ -79,12 +79,11 @@ class Game {
             hearts[i].src = "images/lostHeart.png";
         }
 
-        if (this.missed === 5) {
+        if (this.missed === 5 ) {
             for ( let i = 0; i < 5; i++) {
                 hearts[i].src = "images/liveHeart.png";
             }
             return this.gameOver(false);
-            
         }
     };
 
@@ -102,6 +101,7 @@ class Game {
             $('#overlay').show();
             $('#game-over-message').text("You Lose!");
             $('#overlay').attr('class', 'lose');
+            this.reset();
         }
     };
     /**
@@ -109,7 +109,31 @@ class Game {
     * @param (HTMLButtonElement) button - The clicked button element
     */
     handleInteraction(button) {
-        console.log(button);
-        };
+        button.disabled = true;
+        if (this.activePhrase.checkLetter(button.textContent)) {
+            button.className = "chosen";
+            game.activePhrase.showMatchedLetter(button.textContent);
+        } else {
+            button.className = "wrong";
+            this.removeLife();
+        }
+
+        if(this.checkForWin()) {
+            this.gameOver(true);
+            this.reset();
+        }
+    }
+
+    reset() {
+        const keyboard = document.querySelectorAll('#qwerty button');
+        const hearts = document.querySelectorAll('.tries img');
+        for (let key of keyboard) {
+            key.className = 'key';
+            key.disabled = false;
+        }
+        for ( let i = 0; i < 5; i++) {
+            hearts[i].src = "images/liveHeart.png";
+        }
+    }
 }
 

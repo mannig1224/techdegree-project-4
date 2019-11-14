@@ -9,7 +9,7 @@ class Phrase {
     */
     addPhraseToDisplay() {
         const $phraseUl = $('#phrase ul');
-        
+        $phraseUl.empty();
         for( let i = 0; i < this.phrase.length; i++) {
             
             if (this.phrase.charAt(i) === " ") {
