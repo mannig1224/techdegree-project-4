@@ -13,16 +13,11 @@ class Game {
     */
     createPhrases() {
         const array = 
-        ["One", 
-        "Two", 
-        "Thr",
-        "Fou",
-        "Fiv"];
-        // ["Life is like a box of chocolates", 
-        // "There is no trying", 
-        // "May the force be with you",
-        // "You have to see the matrix for yourself",
-        // "Hello World"];
+        ["Life is like a box of chocolates", 
+        "There is no trying", 
+        "May the force be with you",
+        "You have to see the matrix for yourself",
+        "Hello World"];
         let phraseArr = [];
         array.forEach(function(currentPhrase, index) {
             phraseArr[index] = new Phrase(currentPhrase);
